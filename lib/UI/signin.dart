@@ -51,10 +51,10 @@ class SigninState extends State {
                   new Expanded(
                       flex: 5,
                       child: Text(
-                        'FINDIT'
+                        'HoPE'
                         ,style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 25,
                         fontWeight: FontWeight.w600,
                         letterSpacing: 1.5
                       ),)

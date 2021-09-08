@@ -18,7 +18,7 @@ void main() async {
     initialData: FirebaseAuth.instance.currentUser,
     child: new MaterialApp(
         debugShowCheckedModeBanner: false,
-        title:"DJCSI",
+        title:"HoPE",
         color: Colors.white,
         home:Wrapper()),
   ));

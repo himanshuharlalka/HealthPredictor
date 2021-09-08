@@ -33,19 +33,19 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.Search,
-        labelName: 'Search',
+        labelName: 'Blog',
         //isAssetsImage: true,
         icon: Icon(Icons.search)
         //imageName: 'assets/images/supportIcon.png',
       ),
       DrawerList(
         index: DrawerIndex.Add,
-        labelName: 'Add',
+        labelName: 'About Us',
         icon: Icon(Icons.add),
       ),
       DrawerList(
         index: DrawerIndex.Requests,
-        labelName: 'Your Requests',
+        labelName: 'Health Journal',
         icon: Icon(Icons.request_page),
       ),
 
