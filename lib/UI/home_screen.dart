@@ -1,7 +1,9 @@
 import 'package:health_predictor/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:health_predictor/common/CommonWidgets.dart';
 
 import 'Home.dart';
+import 'AboutUs.dart';
 //import 'model/homelist.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,7 +14,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
- // List<HomeList> homeList = HomeList.homeList;
+  // List<HomeList> homeList = HomeList.homeList;
   late AnimationController animationController;
   bool multiple = true;
 
@@ -50,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  appBar(),
+                  appBar('Home'),
                   Expanded(
                     child: FutureBuilder<bool>(
                       future: getData(),
@@ -69,63 +71,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             );
           }
         },
-      ),
-    );
-  }
-
-  Widget appBar() {
-    return SizedBox(
-      height: AppBar().preferredSize.height,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 8, left: 8),
-            child: Container(
-              width: AppBar().preferredSize.height - 8,
-              height: AppBar().preferredSize.height - 8,
-            ),
-          ),
-          Expanded(
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Text(
-                  'Home',
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: AppTheme.darkText,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8, right: 8),
-            child: Container(
-              width: AppBar().preferredSize.height - 8,
-              height: AppBar().preferredSize.height - 8,
-              color: Colors.white,
-              // child: Material(
-              //   color: Colors.transparent,
-              //   child: InkWell(
-              //     borderRadius:
-              //     BorderRadius.circular(AppBar().preferredSize.height),
-              //     child: Icon(
-              //       multiple ? Icons.dashboard : Icons.view_agenda,
-              //       color: AppTheme.dark_grey,
-              //     ),
-              //     onTap: () {
-              //       setState(() {
-              //         multiple = !multiple;
-              //       });
-              //     },
-              //   ),
-              // ),
-            ),
-          ),
-        ],
       ),
     );
   }

@@ -1,5 +1,8 @@
 //import 'dart:html';
 
+import 'package:health_predictor/UI/AboutUs.dart';
+import 'package:health_predictor/UI/Blog.dart';
+import 'package:health_predictor/UI/HealthJournal.dart';
 import 'package:health_predictor/app_theme.dart';
 import 'package:health_predictor/drawer/drawer_controller.dart';
 import 'package:health_predictor/drawer/home_drawer.dart';
@@ -55,21 +58,19 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         setState(() {
           screenView = const MyHomePage();
         });
-      }
-      // else if (drawerIndex == DrawerIndex.Search) {
-      //   setState(() {
-      //     screenView = Search();
-      //   });
-      // } else if (drawerIndex == DrawerIndex.Requests) {
-      //   setState(() {
-      //     screenView = Requests();
-      //   });
-      // } else if (drawerIndex == DrawerIndex.Add) {
-      //   setState(() {
-      //     screenView = AddItem();
-      //   });
-      // }
-      else {
+      } else if (drawerIndex == DrawerIndex.Blog) {
+        setState(() {
+          screenView = Blog();
+        });
+      } else if (drawerIndex == DrawerIndex.HealthJournal) {
+        setState(() {
+          screenView = HealthJournal();
+        });
+      } else if (drawerIndex == DrawerIndex.AboutUs) {
+        setState(() {
+          screenView = AboutUs();
+        });
+      } else {
         //do in your way......
       }
     }
