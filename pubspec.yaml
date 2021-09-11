@@ -71,6 +71,8 @@ flutter:
     - lib/images/heartbeat.png
     - lib/images/pills.png
     - lib/images/dna.png
+    - lib/images/question_mark.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
