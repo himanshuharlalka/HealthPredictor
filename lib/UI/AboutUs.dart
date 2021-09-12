@@ -1,6 +1,8 @@
 import 'dart:ffi';
-
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:health_predictor/common/Colors_App.dart';
 import 'package:health_predictor/common/CommonWidgets.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -23,7 +25,18 @@ class _AboutUsState extends State<AboutUs> {
     ''
   ];
   List<bool> isOpened = [false, false, false, false, false];
+  List images = [
+    'lib/images/gallery-1.jpg',
+    'lib/images/gallery-2.jpg',
+    'lib/images/gallery-3.jpg',
+    'lib/images/gallery-4.jpg',
+    'lib/images/gallery-5.jpg',
+    'lib/images/gallery-6.jpg',
+    'lib/images/gallery-7.jpg',
+    'lib/images/gallery-8.jpg',
+  ];
   IconData icon = Icons.arrow_drop_down;
+  int _current = 0;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -277,6 +290,103 @@ class _AboutUsState extends State<AboutUs> {
                                   letterSpacing: 1,
                                   color: AppTheme.blue,
                                 ),
+                              ),
+                            ),
+                            Stack(
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.4,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 15.0),
+                                    child: CarouselSlider(
+                                      items: images
+                                          .map(
+                                            (item) => InkWell(
+                                              child: Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.79,
+                                                child: Image.asset(
+                                                  item,
+                                                  width: width,
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                          .toList(),
+                                      options: CarouselOptions(
+                                        viewportFraction: 1,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.76,
+                                        autoPlay: true,
+                                        enlargeCenterPage: true,
+                                        aspectRatio: 2.0,
+                                        onPageChanged: (index, reason) {
+                                          setState(
+                                            () {
+                                              _current = index;
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    top: MediaQuery.of(context).size.height *
+                                        0.4,
+                                  ),
+                                  child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: getCarouselIndicator(
+                                          _current, images)),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: height * 0.02),
+                            Container(
+                              padding: EdgeInsets.all(width * 0.06),
+                              color: AppTheme.lightBlue,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.copyright,
+                                        size: height * 0.02,
+                                      ),
+                                      Text(
+                                        ' Copyright 2021, All Rights Reserved',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: height * 0.025,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.007,
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      'Designed by Chirag, Devanshi, Hetvi, Himanshu & Ishika.',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: height * 0.025,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],

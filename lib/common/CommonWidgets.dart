@@ -120,3 +120,20 @@ Widget appBar(String name) {
     ),
   );
 }
+Widget getCarouselIndicator(int _current, List PostersList) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: PostersList.map((url) {
+      int index = PostersList.indexOf(url);
+      return Container(
+        width: 8.0,
+        height: 8.0,
+        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _current == index ? AppTheme.blue : Color(0xFFD6E0F0),
+        ),
+      );
+    }).toList(),
+  );
+}
