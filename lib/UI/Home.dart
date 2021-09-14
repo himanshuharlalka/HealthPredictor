@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_predictor/UI/ColorBlindness.dart';
 import 'package:health_predictor/common/CommonWidgets.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -84,7 +85,14 @@ class _HomeState extends State<Home> {
                                       homeCards(context, 'lib/images/eye.png',
                                           'Myopia', () {}, false),
                                       homeCards(context, 'lib/images/dna.png',
-                                          'Color Blindness', () {}, true),
+                                          'Color Blindness', () {
+                                        Navigator.push(
+                                            (context),
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ColorBlindness(),
+                                            ));
+                                      }, true),
                                     ],
                                   ),
                                 ],

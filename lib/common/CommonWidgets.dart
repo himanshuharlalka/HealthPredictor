@@ -16,50 +16,57 @@ Widget homeCards(BuildContext context, String image, String title,
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: new Column(children: [
-        Container(
-            width: width * 0.42,
-            height: height * 0.26,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8.0),
-                  topRight: Radius.circular(8.0),
-                  bottomLeft: Radius.circular(8.0),
-                  bottomRight: Radius.circular(8.0)),
-            ),
-            child: Container(
-              margin: EdgeInsets.all(width * 0.04),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(
-                    image,
-                    height: 0.12 * height,
-                    width: 0.15 * height,
-                    color: AppTheme.blue,
-                    alignment: Alignment.topCenter,
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  Container(
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: height * 0.026,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 1,
+        Material(
+          child: InkWell(
+            onTap: () {
+              onPressed();
+            },
+            child: Ink(
+                width: width * 0.42,
+                height: height * 0.26,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8.0),
+                      topRight: Radius.circular(8.0),
+                      bottomLeft: Radius.circular(8.0),
+                      bottomRight: Radius.circular(8.0)),
+                ),
+                child: Container(
+                  margin: EdgeInsets.all(width * 0.04),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        image,
+                        height: 0.12 * height,
+                        width: 0.15 * height,
+                        color: AppTheme.blue,
+                        alignment: Alignment.topCenter,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
+                      SizedBox(
+                        height: height * 0.02,
+                      ),
+                      Container(
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: height * 0.026,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 1,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.01,
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: height * 0.01,
-                  ),
-                ],
-              ),
-            )),
+                )),
+          ),
+        ),
       ]));
 }
 
@@ -120,6 +127,7 @@ Widget appBar(String name) {
     ),
   );
 }
+
 Widget getCarouselIndicator(int _current, List PostersList) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
