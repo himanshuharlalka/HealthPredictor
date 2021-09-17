@@ -5,12 +5,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-  SystemChrome. setEnabledSystemUIOverlays([]);
+  SystemChrome.setEnabledSystemUIOverlays([]);
   //SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
   await Firebase.initializeApp();
   runApp(StreamProvider<User?>.value(
@@ -18,9 +19,8 @@ void main() async {
     initialData: FirebaseAuth.instance.currentUser,
     child: new MaterialApp(
         debugShowCheckedModeBanner: false,
-        title:"HoPE",
+        title: "HoPE",
         color: Colors.white,
-        home:Wrapper()),
+        home: Wrapper()),
   ));
 }
-

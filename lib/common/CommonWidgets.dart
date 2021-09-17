@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:health_predictor/common/Colors_App.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../app_theme.dart';
+
 Widget homeCards(BuildContext context, String image, String title,
     Function onPressed, bool isDown) {
   double height = MediaQuery.of(context).size.height;
@@ -14,49 +16,132 @@ Widget homeCards(BuildContext context, String image, String title,
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: new Column(children: [
-        Container(
-            width: width * 0.42,
-            height: height * 0.26,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8.0),
-                  topRight: Radius.circular(8.0),
-                  bottomLeft: Radius.circular(8.0),
-                  bottomRight: Radius.circular(8.0)),
-            ),
-            child: Container(
-              margin: EdgeInsets.all(width * 0.04),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(
-                    image,
-                    height: 0.12 * height,
-                    width: 0.15 * height,
-                    color: HexColor('#298ce5'),
-                    alignment: Alignment.topCenter,
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  Container(
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: height * 0.026,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 1,
+        Material(
+          child: InkWell(
+            onTap: () {
+              onPressed();
+            },
+            child: Ink(
+                width: width * 0.42,
+                height: height * 0.26,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8.0),
+                      topRight: Radius.circular(8.0),
+                      bottomLeft: Radius.circular(8.0),
+                      bottomRight: Radius.circular(8.0)),
+                ),
+                child: Container(
+                  margin: EdgeInsets.all(width * 0.04),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        image,
+                        height: 0.12 * height,
+                        width: 0.15 * height,
+                        color: AppTheme.blue,
+                        alignment: Alignment.topCenter,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
+                      SizedBox(
+                        height: height * 0.02,
+                      ),
+                      Container(
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: height * 0.026,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 1,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.01,
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: height * 0.01,
-                  ),
-                ],
-              ),
-            )),
+                )),
+          ),
+        ),
       ]));
+}
+
+Widget appBar(String name) {
+  return SizedBox(
+    height: AppBar().preferredSize.height,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(top: 8, left: 8),
+          child: Container(
+            width: AppBar().preferredSize.height - 8,
+            height: AppBar().preferredSize.height - 8,
+          ),
+        ),
+        Expanded(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Text(
+                name,
+                style: TextStyle(
+                  fontSize: 22,
+                  color: AppTheme.darkText,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 8, right: 8),
+          child: Container(
+            width: AppBar().preferredSize.height - 8,
+            height: AppBar().preferredSize.height - 8,
+            color: Colors.white,
+            // child: Material(
+            //   color: Colors.transparent,
+            //   child: InkWell(
+            //     borderRadius:
+            //     BorderRadius.circular(AppBar().preferredSize.height),
+            //     child: Icon(
+            //       multiple ? Icons.dashboard : Icons.view_agenda,
+            //       color: AppTheme.dark_grey,
+            //     ),
+            //     onTap: () {
+            //       setState(() {
+            //         multiple = !multiple;
+            //       });
+            //     },
+            //   ),
+            // ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget getCarouselIndicator(int _current, List PostersList) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: PostersList.map((url) {
+      int index = PostersList.indexOf(url);
+      return Container(
+        width: 8.0,
+        height: 8.0,
+        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _current == index ? AppTheme.blue : Color(0xFFD6E0F0),
+        ),
+      );
+    }).toList(),
+  );
 }

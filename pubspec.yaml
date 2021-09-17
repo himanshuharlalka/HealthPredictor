@@ -43,6 +43,9 @@ dependencies:
   flutter_spinkit: ^5.1.0
   provider: ^6.0.0
   http: ^0.13.3
+  carousel_slider:
+  cached_network_image:
+  step_progress_indicator:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -71,6 +74,30 @@ flutter:
     - lib/images/heartbeat.png
     - lib/images/pills.png
     - lib/images/dna.png
+    - lib/images/question_mark.png
+    - lib/images/gallery-1.jpg
+    - lib/images/gallery-2.jpg
+    - lib/images/gallery-3.jpg
+    - lib/images/gallery-4.jpg
+    - lib/images/gallery-5.jpg
+    - lib/images/gallery-6.jpg
+    - lib/images/gallery-7.jpg
+    - lib/images/gallery-8.jpg
+    - lib/images/ishihara2.png
+    - lib/images/ishihara5.png
+    - lib/images/ishihara7.png
+    - lib/images/ishihara12.png
+    - lib/images/ishihara16.png
+    - lib/images/ishihara29.png
+    - lib/images/ishihara35.png
+    - lib/images/ishihara45.png
+    - lib/images/ishihara74.png
+    - lib/images/ishihara96.png
+    - lib/images/ishihara8.png
+    - lib/images/arrow.png
+
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
