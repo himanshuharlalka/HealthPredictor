@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_predictor/UI/ColorBlindnessResult.dart';
 import 'package:health_predictor/app_theme.dart';
 import 'package:health_predictor/common/GradientProgressBar.dart';
 import 'package:health_predictor/common/MCQ.dart';
@@ -75,6 +76,10 @@ class _ColorBlindnessState extends State<ColorBlindness> {
       _controller.nextPage(duration: _kDuration, curve: _kCurve);
     } else {
       //test finish code
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ColorBlindnessResult(answers: answers)));
     }
   }
 
@@ -180,7 +185,7 @@ class _ColorBlindnessState extends State<ColorBlindness> {
                       children: [
                         Container(
                           child: Text(
-                            "Question " + (pos + 1).toString() + "/11",
+                            "Plate " + (pos + 1).toString() + "/11",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: height * 0.035,
