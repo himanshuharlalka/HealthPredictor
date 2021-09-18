@@ -43,7 +43,13 @@ class _MCQ extends State<MCQ> {
   Color unselected = greyBG;
   List<String> userAnswers = [];
   Function saveMcqAnswers;
-
+  ScrollController? scrollController;
+  List options2 = [
+    'Left number is more clear',
+    'Right number is more clear',
+    'Both are clear'
+  ];
+  String answer2 = "";
   _MCQ(
     this.options,
     this.questions,
@@ -56,6 +62,7 @@ class _MCQ extends State<MCQ> {
   @override
   void initState() {
     super.initState();
+    scrollController = ScrollController();
   }
 
   @override
@@ -64,6 +71,7 @@ class _MCQ extends State<MCQ> {
     double width = MediaQuery.of(context).size.width;
     Style styles = new Style(height);
     return SingleChildScrollView(
+      controller: scrollController,
       physics: BouncingScrollPhysics(),
       child: Container(
         margin: EdgeInsets.only(
@@ -93,6 +101,7 @@ class _MCQ extends State<MCQ> {
             ),
             SizedBox(height: height * 0.02),
             ListView.separated(
+              physics: BouncingScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return InkWell(
@@ -122,8 +131,14 @@ class _MCQ extends State<MCQ> {
                       setState(() {
                         answer = options[index];
                       });
-                      changeFilled(true);
-                      saveMcqAnswers(answer);
+                      if (answer != '35' && answer != '96') {
+                        changeFilled(true);
+                        saveMcqAnswers(answer);
+                      } else {
+                        scrollController!.animateTo(height * 0.5,
+                            duration: Duration(milliseconds: 400),
+                            curve: Curves.ease);
+                      }
                     }
                   },
                 );
@@ -133,6 +148,70 @@ class _MCQ extends State<MCQ> {
               },
               itemCount: options.length,
             ),
+             (answer == '35' || answer == '96')
+                ? SizedBox(height: height * 0.02)
+                : Container(),
+            (answer == '35' || answer == '96')
+                ? Container(
+                    margin: EdgeInsets.only(top: height * 0.012),
+                    child: Text(
+                      'Are both the digits equally clear?',
+                      style: TextStyle(
+                        fontSize: height * 0.025,
+                      ),
+                    ),
+                  )
+                : Container(),
+            (answer == '35' || answer == '96')
+                ? SizedBox(height: height * 0.02)
+                : Container(),
+            (answer == '35' || answer == '96')
+                ? ListView.separated(
+                    physics: BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        
+                        child: Container(
+                          padding: EdgeInsets.all(height * 0.02),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: options2[index] == answer2
+                                ? selected
+                                : unselected,
+                          ),
+                          // height: height * 0.06,
+                          child: Text(
+                            options2[index],
+                            style: options2[index] == answer2
+                                ? styles.getanswersWhiteTextStyle()
+                                : styles.getanswersGreyTextStyle(),
+                          ),
+                        ),
+                        onTap: () {
+                          if (options2[index] == answer2) {
+                            setState(() {
+                              answer2 = '';
+                              userAnswers.remove(options2[index]);
+                            });
+                            changeFilled(false);
+                            saveMcqAnswers('');
+                          } else {
+                            setState(() {
+                              answer2 = options2[index];
+                            });
+                            changeFilled(true);
+                            saveMcqAnswers(answer2);
+                          }
+                        },
+                      );
+                    },
+                    separatorBuilder: (context, item) {
+                      return SizedBox(height: height * 0.01);
+                    },
+                    itemCount: options2.length,
+                  )
+                : Container(),
           ],
         ),
       ),
