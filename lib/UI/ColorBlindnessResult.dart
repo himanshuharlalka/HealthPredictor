@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:health_predictor/common/Colors_App.dart';
 import 'package:health_predictor/common/CommonWidgets.dart';
@@ -29,9 +30,65 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
     '96'
   ];
   List answerList = [];
+  List strongDutan = ['12', '3', '2', '70', '21', 'X', 'X', 'X', 'X', '3', '9'];
+  List mildDutan = [
+    '12',
+    '3',
+    '2',
+    '70',
+    '21',
+    'X',
+    'X',
+    'X',
+    'X',
+    '3(5)*',
+    '9(6)*'
+  ];
+  List strongProtan = [
+    '12',
+    '3',
+    '2',
+    '70',
+    '21',
+    'X',
+    'X',
+    'X',
+    'X',
+    '5',
+    '6'
+  ];
+  List mildProtan = [
+    '12',
+    '3',
+    '2',
+    '70',
+    '21',
+    'X',
+    'X',
+    'X',
+    'X',
+    '(3)5*',
+    '(9)6*'
+  ];
+  List totalColorblindness = [
+    '12',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X'
+  ];
+  String result = '';
   bool flag = false;
   Color selected = AppTheme.blue;
   Color unselected = greyBG;
+  bool rgcb = false;
+  String label = "Red-green color deficiency";
   getData() {
     for (var i in widget.answers!) {
       if (i == 'Plate cannot be read')
@@ -49,6 +106,25 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
     else if (answerList[10] == 'Right number is more clear')
       answerList[10] = '(9)6*';
     else if (answerList[10] == 'Both are clear') answerList[10] = '96';
+    if (listEquals(answerList, correctAnswers)) {
+      result = "Normal vision";
+    } else if (listEquals(answerList, mildDutan)) {
+      rgcb = true;
+      result = "Mild Dutan Colour Blindness";
+    } else if (listEquals(answerList, strongDutan)) {
+      rgcb = true;
+      result = "Strong Dutan Colour Blindness";
+    } else if (listEquals(answerList, mildProtan)) {
+      rgcb = true;
+      result = "Mild Protan Colour Blindness";
+    } else if (listEquals(answerList, strongProtan)) {
+      rgcb = true;
+      result = "Strong Protan Colour Blindness";
+    } else if (listEquals(answerList, totalColorblindness)) {
+      result = "Total Colour Blindness";
+    } else {
+      result = "Not Definite";
+    }
   }
 
   @override
@@ -86,21 +162,62 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
                             children: <Widget>[
                               Container(
                                 color: AppTheme.blue,
-                                height: height * 0.12,
+                                // height: height * 0.18,
                                 width: width,
-                                padding: EdgeInsets.only(top: height * 0.03),
+                                padding: EdgeInsets.only(
+                                    top: height * 0.025,
+                                    left: width * 0.08,
+                                    right: width * 0.08,
+                                    bottom: height * 0.02),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      child: Text(
-                                        "Result: ",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: height * 0.035,
-                                          fontWeight: FontWeight.w600,
+                                    Center(
+                                      child: Container(
+                                        child: Text(
+                                          "RESULT",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: height * 0.032,
+                                            fontWeight: FontWeight.w600,
+                                            decoration:
+                                                TextDecoration.underline,
+                                          ),
+                                          textAlign: TextAlign.center,
                                         ),
                                       ),
                                     ),
+                                    SizedBox(
+                                      height: height * 0.01,
+                                    ),
+                                    rgcb
+                                        ? Container(
+                                            child: Text(
+                                              label,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: height * 0.035,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                              textAlign: TextAlign.start,
+                                            ),
+                                          )
+                                        : Container(),
+                                    Container(
+                                      child: Text(
+                                        result,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: rgcb
+                                              ? height * 0.027
+                                              : height * 0.035,
+                                          fontWeight: rgcb
+                                              ? FontWeight.w500
+                                              : FontWeight.w600,
+                                        ),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
