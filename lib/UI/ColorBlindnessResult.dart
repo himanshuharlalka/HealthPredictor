@@ -165,33 +165,49 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
                                 // height: height * 0.18,
                                 width: width,
                                 padding: EdgeInsets.only(
-                                    top: height * 0.025,
-                                    left: width * 0.08,
-                                    right: width * 0.08,
+                                    top: height * 0.02,
+                                    left: width * 0.01,
+                                    right: width * 0.01,
                                     bottom: height * 0.02),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Center(
-                                      child: Container(
-                                        child: Text(
-                                          "RESULT",
-                                          style: TextStyle(
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          icon: Icon(
+                                            Icons.arrow_back,
                                             color: Colors.white,
-                                            fontSize: height * 0.032,
-                                            fontWeight: FontWeight.w600,
-                                            decoration:
-                                                TextDecoration.underline,
+                                            size: height * 0.04,
                                           ),
-                                          textAlign: TextAlign.center,
                                         ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: height * 0.01,
+                                        SizedBox(
+                                          width: width * 0.25,
+                                        ),
+                                        Container(
+                                          child: Text(
+                                            "RESULT",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: height * 0.032,
+                                              fontWeight: FontWeight.w600,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     rgcb
                                         ? Container(
+                                            padding: EdgeInsets.only(
+                                              left: width * 0.08,
+                                              right: width * 0.08,
+                                            ),
                                             child: Text(
                                               label,
                                               style: TextStyle(
@@ -203,19 +219,25 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
                                             ),
                                           )
                                         : Container(),
-                                    Container(
-                                      child: Text(
-                                        result,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: rgcb
-                                              ? height * 0.027
-                                              : height * 0.035,
-                                          fontWeight: rgcb
-                                              ? FontWeight.w500
-                                              : FontWeight.w600,
+                                    Center(
+                                      child: Container(
+                                        padding: EdgeInsets.only(
+                                          left: width * 0.08,
+                                          right: width * 0.08,
                                         ),
-                                        textAlign: TextAlign.start,
+                                        child: Text(
+                                          result,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: rgcb
+                                                ? height * 0.027
+                                                : height * 0.035,
+                                            fontWeight: rgcb
+                                                ? FontWeight.w500
+                                                : FontWeight.w600,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                        ),
                                       ),
                                     )
                                   ],
