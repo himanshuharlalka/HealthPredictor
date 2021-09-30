@@ -193,9 +193,7 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: height * 0.032,
-                                              fontWeight: FontWeight.w600,
-                                              decoration:
-                                                  TextDecoration.underline,
+                                              fontWeight: FontWeight.w700,
                                             ),
                                             textAlign: TextAlign.center,
                                           ),
@@ -203,25 +201,28 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
                                       ],
                                     ),
                                     rgcb
-                                        ? Container(
-                                            padding: EdgeInsets.only(
-                                              left: width * 0.08,
-                                              right: width * 0.08,
-                                            ),
-                                            child: Text(
-                                              label,
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: height * 0.035,
-                                                fontWeight: FontWeight.w600,
+                                        ? Center(
+                                          child: Container(
+                                              padding: EdgeInsets.only(
+                                                left: width * 0.08,
+                                                right: width * 0.08,
                                               ),
-                                              textAlign: TextAlign.start,
+                                              child: Text(
+                                                label,
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: height * 0.03,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                              ),
                                             ),
-                                          )
+                                        )
                                         : Container(),
                                     Center(
                                       child: Container(
                                         padding: EdgeInsets.only(
+                                          top: height * 0.005,
                                           left: width * 0.08,
                                           right: width * 0.08,
                                         ),
@@ -230,10 +231,10 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: rgcb
-                                                ? height * 0.027
+                                                ? height * 0.024
                                                 : height * 0.035,
                                             fontWeight: rgcb
-                                                ? FontWeight.w500
+                                                ? FontWeight.w400
                                                 : FontWeight.w600,
                                           ),
                                           textAlign: TextAlign.start,
