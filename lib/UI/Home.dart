@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_predictor/UI/ColorBlindness.dart';
+import 'package:health_predictor/UI/StartTestCard.dart';
 import 'package:health_predictor/common/CommonWidgets.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -79,16 +80,61 @@ class _HomeState extends State<Home> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  homeCards(context, 'lib/images/eye.png',
-                                      'Myopia', () {}, false),
+                                  homeCards(
+                                      context, 'lib/images/eye.png', 'Myopia',
+                                      () {
+                                    Navigator.push(
+                                      (context),
+                                      MaterialPageRoute(
+                                        builder: (context) => StartTestCard(
+                                          title: 'Myopia',
+                                          image: 'lib/images/myopia_st.png',
+                                          text:
+                                              '''Color blindness often happens when someone cannot distinguish between certain colors. It is also known as color deficiency.''',
+                                          instructions:
+                                              '''• Ensure proper room lighting and phone brightness.
+• Wear any glasses if necessary for near vision.
+• Hold screen at a comfortable reading distance (~14 inches or 35 cm).''',
+                                          onPress: () {
+                                            Navigator.pushReplacement(
+                                              (context),
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ColorBlindness(),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    );
+                                  }, false),
                                   homeCards(context, 'lib/images/dna.png',
                                       'Color Blindness', () {
                                     Navigator.push(
-                                        (context),
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              ColorBlindness(),
-                                        ));
+                                      (context),
+                                      MaterialPageRoute(
+                                        builder: (context) => StartTestCard(
+                                          title: 'Color Blindness',
+                                          image:
+                                              'lib/images/colorblindness_st.png',
+                                          text:
+                                              '''Color blindness often happens when someone cannot distinguish between certain colors. It is also known as color deficiency.''',
+                                          instructions:
+                                              '''• Ensure proper room lighting and phone brightness.
+• Wear any glasses if necessary for near vision.
+• Hold screen at a comfortable reading distance (~14 inches or 35 cm).''',
+                                          onPress: () {
+                                            Navigator.pushReplacement(
+                                              (context),
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ColorBlindness(),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    );
                                   }, true),
                                 ],
                               ),
