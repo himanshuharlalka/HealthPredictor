@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_predictor/UI/ColorBlindness.dart';
+import 'package:health_predictor/UI/Myopia.dart';
 import 'package:health_predictor/UI/StartTestCard.dart';
 import 'package:health_predictor/common/CommonWidgets.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -99,8 +100,7 @@ class _HomeState extends State<Home> {
                                             Navigator.pushReplacement(
                                               (context),
                                               MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ColorBlindness(),
+                                                builder: (context) => Myopia(),
                                               ),
                                             );
                                           },
