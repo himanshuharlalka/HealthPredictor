@@ -1,8 +1,7 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
-import 'package:permission_handler/permission_handler.dart';
-
 class Myopia extends StatefulWidget {
   Myopia({Key? key}) : super(key: key);
 
@@ -14,12 +13,21 @@ class _MyopiaState extends State<Myopia> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   String _text = 'Press the button and start speaking';
+  //AudioPlayer audioPlayer;
+  AudioCache cache = new AudioCache();
   @override
   void initState() {
     super.initState();
     _initSpeech();
+    playLocal();
   }
+  playLocal() async {
+    AudioPlayer audioPlayer= await cache.play("myopia_audio.mp3");
+    audioPlayer.onPlayerStateChanged.listen((PlayerState s) { if(s==PlayerState.PAUSED||s==PlayerState.STOPPED||s==PlayerState.COMPLETED){
+      _listen();
+    }});
 
+  }
   /// This has to happen only once per app
   void _initSpeech() async {
     super.initState();
