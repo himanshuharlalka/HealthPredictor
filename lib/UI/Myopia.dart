@@ -36,6 +36,8 @@ class _MyopiaState extends State<Myopia> {
       if (available) {
         setState(() => _isListening = true);
         _speech.listen(
+          listenFor: Duration(minutes: 5),
+          pauseFor: Duration(seconds: 10),
           onResult: (val) => setState(() {
             _text = val.recognizedWords;
           }),
@@ -51,7 +53,7 @@ class _MyopiaState extends State<Myopia> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Confidence: 100.0'),
+        title: Text('Myopia'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton:  FloatingActionButton(
