@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
                           margin: EdgeInsets.only(top: height * 0.03),
                           child: Center(
                               child: Image.asset(
-                            "lib/images/search.png",
+                            "lib/images/HoPElogo.png",
                             width: 100,
                             height: 100,
                           )),
@@ -91,11 +91,12 @@ class _HomeState extends State<Home> {
                                           title: 'Myopia',
                                           image: 'lib/images/myopia_st.png',
                                           text:
-                                              '''Color blindness often happens when someone cannot distinguish between certain colors. It is also known as color deficiency.''',
+                                              '''Myopia is a vision condition in which you can see objects near to you clearly, but objects farther away are blurry.''',
                                           instructions:
-                                              '''• Ensure proper room lighting and phone brightness.
-• Wear any glasses if necessary for near vision.
-• Hold screen at a comfortable reading distance (~14 inches or 35 cm).''',
+                                              '''• Keep your arm straight with the phone in your hand.
+• Clearly call out the direction in which the E is facing. (i.e. Left, Right, Up or Down)
+• Use a microphone for better results.
+• Ensure proper room lighting and phone brightness.''',
                                           onPress: () {
                                             Navigator.pushReplacement(
                                               (context),

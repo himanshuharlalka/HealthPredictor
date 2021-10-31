@@ -28,13 +28,20 @@ class _MyopiaState extends State<Myopia> {
   static const _kCurve = Curves.ease;
   int pos = 0;
   List<bool>? _isFilled;
-  List<dynamic> answers = [
-    ['down', 'down', 'left', 'right', 'up', 'down', 'left', 'right']
+  List<String> answers = [
+    'right',
+    'down',
+    'up',
+    'right',
+    'left',
+    'down',
+    'left',
+    'up'
   ];
   String? selectedMcq;
   bool? showPopup;
   String ques = 'What number do you see?';
-  List choices = ['up', 'down', 'left', 'right'];
+  List<String> choices = ['up', 'down', 'left', 'right', 'aap'];
 
   void changePos(value) {
     setState(() {
@@ -52,6 +59,8 @@ class _MyopiaState extends State<Myopia> {
     if (pos != 7) {
       changePos(pos + 1);
       _controller.nextPage(duration: _kDuration, curve: _kCurve);
+      playLocal();
+      _text = "";
     } else {
       //test finish code
       Navigator.pushReplacement(
@@ -91,19 +100,6 @@ class _MyopiaState extends State<Myopia> {
       true,
       true,
     ];
-    answers = [
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-    ];
 
     selectedMcq = '';
     showPopup = true;
@@ -115,9 +111,37 @@ class _MyopiaState extends State<Myopia> {
       if (s == PlayerState.PAUSED ||
           s == PlayerState.STOPPED ||
           s == PlayerState.COMPLETED) {
-        _listen();
+        Future.delayed(const Duration(milliseconds: 0), () {
+          _listen();
+        });
+        Future.delayed(const Duration(milliseconds: 4000), () {
+          checkAnswer();
+        });
       }
     });
+  }
+
+  checkAnswer() {
+    print('hi');
+    bool flag = false;
+    for (var s in choices) {
+      print(_text);
+      if (_text.toLowerCase().contains(s)) {
+        flag = true;
+        // print(_text + " SSSSSSSS");
+        print(answers[pos] + " " + s);
+        if (answers[pos] == s) {
+          print('called');
+          nextPage();
+        } else {
+          //code for wrong answer
+        }
+      }
+    }
+    if (!flag) {
+      print('play again');
+      playLocal();
+    }
   }
 
   /// This has to happen only once per app
@@ -129,32 +153,26 @@ class _MyopiaState extends State<Myopia> {
   /// Each time to start a speech recognition session
   void _listen() async {
     if (!_isListening) {
-      bool available = await _speech.initialize(onStatus: (val) {
-        print('onStatus: $val');
-        if (val == 'done') {
-          print(_text);
-          _isListening = false;
-          for (var s in choices) {
-            if (_text.toLowerCase().contains(s)) {
-              if (answers[pos] == s) {
-                nextPage();
-              } else {}
-            } else {
-              playLocal();
+      bool available = await _speech.initialize(
+          finalTimeout: Duration(seconds: 20),
+          onStatus: (val) {
+            print('onStatus: $val');
+            if (val == 'done') {
+              print(_text);
             }
-          }
-        }
-      }, onError: (val) {
-        print('onError: $val');
-        _isListening = false;
-      });
+          },
+          onError: (val) {
+            print('onError: $val');
+            _isListening = false;
+          });
       if (available) {
         setState(() => _isListening = true);
         _speech.listen(
-          listenFor: Duration(minutes: 5),
+          listenFor: Duration(seconds: 15),
           pauseFor: Duration(seconds: 10),
           onResult: (val) => setState(() {
             _text = val.recognizedWords;
+
             print(_text);
           }),
         );
@@ -237,7 +255,7 @@ class _MyopiaState extends State<Myopia> {
                       children: [
                         Container(
                           child: Text(
-                            "Plate " + (pos + 1).toString() + "/8",
+                            "Image " + (pos + 1).toString() + "/8",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: height * 0.035,
