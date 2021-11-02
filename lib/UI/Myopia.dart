@@ -28,15 +28,15 @@ class _MyopiaState extends State<Myopia> {
   static const _kCurve = Curves.ease;
   int pos = 0;
   List<bool>? _isFilled;
-  List<String> answers = [
-    'right',
-    'down',
-    'up',
-    'right',
-    'left',
-    'down',
-    'left',
-    'up'
+  List<List<String>> answers = [
+    ['right'],
+    ['down'],
+    ['up', 'aap', 'ab'],
+    ['right'],
+    ['left'],
+    ['down'],
+    ['left'],
+    ['up', 'aap', 'ab']
   ];
   String? selectedMcq;
   bool? showPopup;
@@ -115,6 +115,8 @@ class _MyopiaState extends State<Myopia> {
           _listen();
         });
         Future.delayed(const Duration(milliseconds: 4000), () {
+          setState(() => _isListening = false);
+      _speech.stop();
           checkAnswer();
         });
       }
@@ -129,8 +131,7 @@ class _MyopiaState extends State<Myopia> {
       if (_text.toLowerCase().contains(s)) {
         flag = true;
         // print(_text + " SSSSSSSS");
-        print(answers[pos] + " " + s);
-        if (answers[pos] == s) {
+        if (answers[pos].contains(s)) {
           print('called');
           nextPage();
         } else {
@@ -185,49 +186,41 @@ class _MyopiaState extends State<Myopia> {
 
   void saveAnswers1(String level) {
     // setState(() {
-    answers[0] = level;
     // });
   }
 
   void saveAnswers2(String level) {
     // setState(() {
-    answers[1] = level;
     // });
   }
 
   void saveAnswers3(String level) {
     // setState(() {
-    answers[2] = level;
     // });
   }
 
   void saveAnswers4(String level) {
     // setState(() {
-    answers[3] = level;
     // });
   }
 
   void saveAnswers5(String level) {
     // setState(() {
-    answers[4] = level;
     // });
   }
 
   void saveAnswers6(String level) {
     // setState(() {
-    answers[5] = level;
     // });
   }
 
   void saveAnswers7(String level) {
     // setState(() {
-    answers[6] = level;
     // });
   }
 
   void saveAnswers8(String level) {
     // setState(() {
-    answers[7] = level;
     // });
   }
 
