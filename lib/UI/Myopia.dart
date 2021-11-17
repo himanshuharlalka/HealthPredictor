@@ -41,7 +41,7 @@ class _MyopiaState extends State<Myopia> {
   String? selectedMcq;
   bool? showPopup;
   String ques = 'What number do you see?';
-  List<String> choices = ['up', 'down', 'left', 'right', 'aap'];
+  List<String> choices = ['up', 'down', 'left', 'right', 'aap','ab'];
 
   void changePos(value) {
     setState(() {
@@ -66,7 +66,7 @@ class _MyopiaState extends State<Myopia> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (context) => MyopiaResult(answers: answers)));
+              builder: (context) => MyopiaResult(answers: pos)));
     }
   }
 
@@ -135,7 +135,10 @@ class _MyopiaState extends State<Myopia> {
           print('called');
           nextPage();
         } else {
-          //code for wrong answer
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MyopiaResult(answers: pos)));
         }
       }
     }
