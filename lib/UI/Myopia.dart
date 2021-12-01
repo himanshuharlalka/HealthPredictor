@@ -41,8 +41,9 @@ class _MyopiaState extends State<Myopia> {
   String? selectedMcq;
   bool? showPopup;
   String ques = 'What number do you see?';
-  List<String> choices = ['up', 'down', 'left', 'right', 'aap','ab'];
-
+  List<String> choices = ['up', 'down', 'left', 'right', 'aap', 'ab'];
+  bool canFinish = true;
+  bool ended = false;
   void changePos(value) {
     setState(() {
       pos = value;
@@ -63,10 +64,8 @@ class _MyopiaState extends State<Myopia> {
       _text = "";
     } else {
       //test finish code
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => MyopiaResult(answers: pos)));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => MyopiaResult(answers: pos)));
     }
   }
 
@@ -107,17 +106,23 @@ class _MyopiaState extends State<Myopia> {
 
   playLocal() async {
     AudioPlayer audioPlayer = await cache.play("myopia_audio.mp3");
+    setState(() => canFinish = false);
+
     audioPlayer.onPlayerStateChanged.listen((PlayerState s) {
       if (s == PlayerState.PAUSED ||
           s == PlayerState.STOPPED ||
           s == PlayerState.COMPLETED) {
         Future.delayed(const Duration(milliseconds: 0), () {
           _listen();
+          setState(() => canFinish = true);
         });
+
         Future.delayed(const Duration(milliseconds: 4000), () {
-          setState(() => _isListening = false);
-      _speech.stop();
-          checkAnswer();
+          if (!ended) {
+            setState(() => _isListening = false);
+            _speech.stop();
+            checkAnswer();
+          }
         });
       }
     });
@@ -172,8 +177,8 @@ class _MyopiaState extends State<Myopia> {
       if (available) {
         setState(() => _isListening = true);
         _speech.listen(
-          listenFor: Duration(seconds: 15),
-          pauseFor: Duration(seconds: 10),
+          listenFor: Duration(seconds: 4),
+          pauseFor: Duration(seconds: 4),
           onResult: (val) => setState(() {
             _text = val.recognizedWords;
 
@@ -306,16 +311,110 @@ class _MyopiaState extends State<Myopia> {
                     ),
                   ),
                   //SizedBox(height: height*0.01,),
-                  NavigateButtons(
-                    pos != 7 ? 'NEXT' : 'FINISH',
-                    'BACK',
-                    _isFilled![pos],
-                    height,
-                    width,
-                    context,
-                    nextPage,
-                    prevPage,
-                  ),
+                  // NavigateButtons(
+                  //   '',
+                  //   'QUIT',
+                  //   _isFilled![pos],
+                  //   height,
+                  //   width,
+                  //   context,
+                  //   nextPage,
+                  //   prevPage,
+                  // ),
+                  Material(
+                    elevation: 10,
+                    color: Colors.white,
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(
+                        0.1 * width,
+                        height * 0.02,
+                        0.1 * width,
+                        height * 0.03,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              if (canFinish) {
+                                setState(() {
+                                  _isListening = false;
+                                  ended = true;
+                                });
+                                _speech.stop();
+                                Navigator.of(context).pop();
+                              }
+                            },
+                            child: Ink(
+                              height: 0.06 * height,
+                              width: 0.2 * width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(8.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'QUIT',
+                                  style: TextStyle(
+                                    color: (canFinish)
+                                        ? Colors.black
+                                        : Colors.grey,
+                                    fontWeight: (canFinish)
+                                        ? FontWeight.w400
+                                        : FontWeight.w500,
+                                    fontSize: height * 0.03,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              if (canFinish) {
+                                setState(() {
+                                  _isListening = false;
+                                  ended = true;
+                                });
+                                _speech.stop();
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            MyopiaResult(answers: pos)));
+                              }
+                            },
+                            child: Ink(
+                              height: 0.06 * height,
+                              width: 0.3 * width,
+                              decoration: BoxDecoration(
+                                color: (canFinish)
+                                    ? AppTheme.blue
+                                    : HexColor("#E3E3E3"),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(8.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'FINISH',
+                                  style: TextStyle(
+                                    color: (canFinish)
+                                        ? AppTheme.white
+                                        : AppTheme.nearlyWhite,
+                                    fontWeight: (canFinish)
+                                        ? FontWeight.w400
+                                        : FontWeight.w500,
+                                    fontSize: height * 0.03,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
