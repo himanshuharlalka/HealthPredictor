@@ -41,7 +41,8 @@ class _MyopiaResultState extends State<MyopiaResult> {
 
   @override
   void initState() {
-    result=acuityUS[widget.answers]+" "+acuityNonUS[widget.answers];
+    result =
+        acuityUS[widget.answers] + " (" + acuityNonUS[widget.answers] + ")";
     super.initState();
   }
 
@@ -96,11 +97,11 @@ class _MyopiaResultState extends State<MyopiaResult> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: width * 0.25,
+                                    width: width * 0.16,
                                   ),
                                   Container(
                                     child: Text(
-                                      "RESULT",
+                                      "VISUAL ACUITY",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: height * 0.032,
@@ -135,35 +136,6 @@ class _MyopiaResultState extends State<MyopiaResult> {
                         SizedBox(
                           height: height * 0.01,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(8),
-                                          bottomLeft: Radius.circular(8)),
-                                      color: !flag ? selected : unselected,
-                                    ),
-                                    height: height * 0.05,
-                                    child: Center(
-                                      child: Text(
-                                        'Next Step',
-                                        style: styles.getanswersWhiteTextStyle(),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -174,17 +146,29 @@ class _MyopiaResultState extends State<MyopiaResult> {
                               left: width * 0.02, right: width * 0.02),
                           padding: EdgeInsets.all(width * 0.035),
                           child: Column(
-                            //wat u wanna do margin everywheretext ke around
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
                                 height: height * 0.01,
                               ),
                               Text(
+                                (widget.answers < 5)
+                                    ? '''You seem to have difficulties recognising small characters.'''
+                                    : '''Congratulations, your visual acuity seems good.''',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: height * 0.030,
+                                  color: AppTheme.darkText,
+                                ),
+                              ),
+                              SizedBox(
+                                height: height * 0.025,
+                              ),
+                              Text(
                                 'ADVICE',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: height * 0.025,
+                                  fontSize: height * 0.027,
                                   color: AppTheme.darkText,
                                 ),
                               ),
@@ -192,10 +176,12 @@ class _MyopiaResultState extends State<MyopiaResult> {
                                 height: height * 0.01,
                               ),
                               Text(
-                                'Patients with more than two incorrect plates are considered to have color vision deficiency.',
+                                (widget.answers < 5)
+                                    ? '''We recommend you have a vision exam with an eye care professional.'''
+                                    : '''However, to verify the health of your eyes, don't hesitate to fix an appointment with an eye care professional.''',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: height * 0.02,
+                                  fontSize: height * 0.023,
                                   color: AppTheme.dark_grey,
                                 ),
                               ),
@@ -206,7 +192,7 @@ class _MyopiaResultState extends State<MyopiaResult> {
                                 'MANAGEMENT',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: height * 0.025,
+                                  fontSize: height * 0.027,
                                   color: AppTheme.darkText,
                                 ),
                               ),
@@ -214,10 +200,10 @@ class _MyopiaResultState extends State<MyopiaResult> {
                                 height: height * 0.01,
                               ),
                               Text(
-                                'Patients with color vision deficiency should undergo further evaluation by an ophthalmologist or neuro-ophthalmologist.',
+                                'Visual acuity worse than 20/25 (0.8 if non-US) should be evaluated by a licensed eye professional to determine whether corrective lenses or other treatments may be necessary',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: height * 0.02,
+                                  fontSize: height * 0.023,
                                   color: AppTheme.dark_grey,
                                 ),
                               ),
