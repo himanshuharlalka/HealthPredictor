@@ -19,59 +19,131 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
   List correctAnswers = [
     '12',
     '8',
-    '5',
+    '6',
     '29',
+    '57',
+    '5',
+    '3',
+    '15',
     '74',
-    '7',
-    '45',
     '2',
+    '6',
+    '97',
+    '45',
+    '5',
+    '7',
     '16',
+    '73',
+    'X',
+    'X',
     '35',
     '96'
   ];
   List answerList = [];
-  List strongDutan = ['12', '3', '2', '70', '21', 'X', 'X', 'X', 'X', '3', '9'];
-  List mildDutan = [
+  List strongDutan = [
     '12',
     '3',
-    '2',
+    '5',
     '70',
+    '35',
+    '2',
+    '5',
+    '17',
     '21',
     'X',
     'X',
     'X',
     'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    '5',
+    '2',
+    '3',
+    '9'
+  ];
+  List mildDutan = [
+    '12',
+    '3',
+    '5',
+    '70',
+    '35',
+    '2',
+    '5',
+    '17',
+    '21',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    '5',
+    '2',
     '3(5)*',
     '9(6)*'
   ];
   List strongProtan = [
     '12',
     '3',
-    '2',
+    '5',
     '70',
+    '35',
+    '2',
+    '5',
+    '17',
     '21',
     'X',
     'X',
     'X',
     'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    '5',
+    '2',
     '5',
     '6'
   ];
   List mildProtan = [
     '12',
     '3',
-    '2',
+    '5',
     '70',
+    '35',
+    '2',
+    '5',
+    '17',
     '21',
     'X',
     'X',
     'X',
     'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    '5',
+    '2',
     '(3)5*',
     '(9)6*'
   ];
   List totalColorblindness = [
     '12',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
+    'X',
     'X',
     'X',
     'X',
@@ -202,7 +274,7 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
                                     ),
                                     rgcb
                                         ? Center(
-                                          child: Container(
+                                            child: Container(
                                               padding: EdgeInsets.only(
                                                 left: width * 0.08,
                                                 right: width * 0.08,
@@ -217,7 +289,7 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
                                                 textAlign: TextAlign.start,
                                               ),
                                             ),
-                                        )
+                                          )
                                         : Container(),
                                     Center(
                                       child: Container(

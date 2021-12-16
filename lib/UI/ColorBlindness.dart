@@ -37,8 +37,28 @@ class _ColorBlindnessState extends State<ColorBlindness> {
       false,
       false,
       false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
     ];
     answers = [
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
       '',
       '',
       '',
@@ -71,7 +91,7 @@ class _ColorBlindnessState extends State<ColorBlindness> {
   }
 
   void nextPage() {
-    if (pos != 10) {
+    if (pos != 20) {
       changePos(pos + 1);
       _controller.nextPage(duration: _kDuration, curve: _kCurve);
     } else {
@@ -161,6 +181,66 @@ class _ColorBlindnessState extends State<ColorBlindness> {
     // });
   }
 
+  void saveSliderAnswers12(String level) {
+    // setState(() {
+    answers![11] = level;
+    // });
+  }
+
+  void saveSliderAnswers13(String level) {
+    // setState(() {
+    answers![12] = level;
+    // });
+  }
+
+  void saveSliderAnswers14(String level) {
+    // setState(() {
+    answers![13] = level;
+    // });
+  }
+
+  void saveSliderAnswers15(String level) {
+    // setState(() {
+    answers![14] = level;
+    // });
+  }
+
+  void saveSliderAnswers16(String level) {
+    // setState(() {
+    answers![15] = level;
+    // });
+  }
+
+  void saveSliderAnswers17(String level) {
+    // setState(() {
+    answers![16] = level;
+    // });
+  }
+
+  void saveSliderAnswers18(String level) {
+    // setState(() {
+    answers![17] = level;
+    // });
+  }
+
+  void saveSliderAnswers19(String level) {
+    // setState(() {
+    answers![18] = level;
+    // });
+  }
+
+  void saveSliderAnswers20(String level) {
+    // setState(() {
+    answers![19] = level;
+    // });
+  }
+
+  void saveSliderAnswers21(String level) {
+    // setState(() {
+    answers![20] = level;
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
     double height =
@@ -180,12 +260,12 @@ class _ColorBlindnessState extends State<ColorBlindness> {
                   Container(
                     color: AppTheme.blue,
                     height: height * 0.12,
-                    padding: EdgeInsets.only(top: height * 0.03),
+                    padding: EdgeInsets.only(top: height * 0.02),
                     child: Column(
                       children: [
                         Container(
                           child: Text(
-                            "Plate " + (pos + 1).toString() + "/11",
+                            "Plate " + (pos + 1).toString() + "/21",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: height * 0.035,
@@ -196,11 +276,11 @@ class _ColorBlindnessState extends State<ColorBlindness> {
                         Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: width * 0.05,
-                            vertical: height * 0.01,
+                            vertical: height * 0.005,
                           ),
                           child: GradientProgressBar(
-                            size: 12,
-                            totalSteps: 11,
+                            size: 22,
+                            totalSteps: 21,
                             curStep: pos + 1,
                             leftColor: HexColor('#87C3FF'),
                             rightColor: HexColor('#F878AC'),
@@ -215,14 +295,14 @@ class _ColorBlindnessState extends State<ColorBlindness> {
                     height: height * 0.77,
                     child: PageView.builder(
                       controller: _controller,
-                      itemCount: 11,
+                      itemCount: 21,
                       physics: new NeverScrollableScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
                         return [
                           MCQ(
                               ['12', 'Other number', 'Plate cannot be read'],
                               ques,
-                              'lib/images/ishihara12.png',
+                              'lib/images/ishihara12.jpg',
                               answers![0],
                               changeIsFilled,
                               saveSliderAnswers1),
@@ -231,80 +311,150 @@ class _ColorBlindnessState extends State<ColorBlindness> {
                             '3',
                             'Other number',
                             'Plate cannot be read'
-                          ], ques, 'lib/images/ishihara8.png', answers![1],
+                          ], ques, 'lib/images/ishihara8.jpg', answers![1],
                               changeIsFilled, saveSliderAnswers2),
                           MCQ([
+                            '6',
                             '5',
-                            '2',
                             'Other number',
                             'Plate cannot be read'
-                          ], ques, 'lib/images/ishihara5.png', answers![2],
+                          ], ques, 'lib/images/ishihara6.jpg', answers![2],
                               changeIsFilled, saveSliderAnswers3),
                           MCQ([
                             '29',
                             '70',
                             'Other number',
                             'Plate cannot be read'
-                          ], ques, 'lib/images/ishihara29.png', answers![3],
+                          ], ques, 'lib/images/ishihara29.jpg', answers![3],
                               changeIsFilled, saveSliderAnswers4),
+                          MCQ([
+                            '57',
+                            '35',
+                            'Other number',
+                            'Plate cannot be read'
+                          ], ques, 'lib/images/ishihara57.jpg', answers![4],
+                              changeIsFilled, saveSliderAnswers5),
+                          MCQ([
+                            '5',
+                            '2',
+                            'Other number',
+                            'Plate cannot be read'
+                          ], ques, 'lib/images/ishihara5.jpg', answers![5],
+                              changeIsFilled, saveSliderAnswers6),
+                          MCQ([
+                            '3',
+                            '5',
+                            'Other number',
+                            'Plate cannot be read'
+                          ], ques, 'lib/images/ishihara3.jpg', answers![6],
+                              changeIsFilled, saveSliderAnswers7),
+                          MCQ([
+                            '15',
+                            '17',
+                            'Other number',
+                            'Plate cannot be read'
+                          ], ques, 'lib/images/ishihara15.jpg', answers![7],
+                              changeIsFilled, saveSliderAnswers8),
                           MCQ([
                             '74',
                             '21',
                             'Other number',
                             'Plate cannot be read'
-                          ], ques, 'lib/images/ishihara74.png', answers![4],
-                              changeIsFilled, saveSliderAnswers5),
-                          MCQ(
-                              ['7', 'Other number', 'Plate cannot be read'],
-                              ques,
-                              'lib/images/ishihara7.png',
-                              answers![5],
-                              changeIsFilled,
-                              saveSliderAnswers6),
-                          MCQ(
-                              ['45', 'Other number', 'Plate cannot be read'],
-                              ques,
-                              'lib/images/ishihara45.png',
-                              answers![6],
-                              changeIsFilled,
-                              saveSliderAnswers7),
+                          ], ques, 'lib/images/ishihara74.jpg', answers![8],
+                              changeIsFilled, saveSliderAnswers9),
                           MCQ(
                               ['2', 'Other number', 'Plate cannot be read'],
                               ques,
-                              'lib/images/ishihara2.png',
-                              answers![7],
+                              'lib/images/ishihara2.jpg',
+                              answers![9],
                               changeIsFilled,
-                              saveSliderAnswers8),
+                              saveSliderAnswers10),
+                          MCQ(
+                              ['6', 'Other number', 'Plate cannot be read'],
+                              ques,
+                              'lib/images/ishihara6.jpg',
+                              answers![10],
+                              changeIsFilled,
+                              saveSliderAnswers11),
+                          MCQ(
+                              ['97', 'Other number', 'Plate cannot be read'],
+                              ques,
+                              'lib/images/ishihara97.jpg',
+                              answers![11],
+                              changeIsFilled,
+                              saveSliderAnswers12),
+                          MCQ(
+                              ['45', 'Other number', 'Plate cannot be read'],
+                              ques,
+                              'lib/images/ishihara45.jpg',
+                              answers![12],
+                              changeIsFilled,
+                              saveSliderAnswers13),
+                          MCQ(
+                              ['5', 'Other number', 'Plate cannot be read'],
+                              ques,
+                              'lib/images/ishihara5.1.jpg',
+                              answers![13],
+                              changeIsFilled,
+                              saveSliderAnswers14),
+                          MCQ(
+                              ['7', 'Other number', 'Plate cannot be read'],
+                              ques,
+                              'lib/images/ishihara7.jpg',
+                              answers![14],
+                              changeIsFilled,
+                              saveSliderAnswers15),
                           MCQ(
                               ['16', 'Other number', 'Plate cannot be read'],
                               ques,
-                              'lib/images/ishihara16.png',
-                              answers![8],
+                              'lib/images/ishihara16.jpg',
+                              answers![15],
                               changeIsFilled,
-                              saveSliderAnswers9),
+                              saveSliderAnswers16),
+                          MCQ(
+                              ['73', 'Other number', 'Plate cannot be read'],
+                              ques,
+                              'lib/images/ishihara73.jpg',
+                              answers![16],
+                              changeIsFilled,
+                              saveSliderAnswers17),
+                          MCQ(
+                              ['5', 'Other number', 'Plate cannot be read'],
+                              ques,
+                              'lib/images/ishiharaX1.jpg',
+                              answers![17],
+                              changeIsFilled,
+                              saveSliderAnswers18),
+                          MCQ(
+                              ['2', 'Other number', 'Plate cannot be read'],
+                              ques,
+                              'lib/images/ishiharaX2.jpg',
+                              answers![18],
+                              changeIsFilled,
+                              saveSliderAnswers19),
                           MCQ([
                             '3',
                             '5',
                             '35',
                             'Other number',
                             'Plate cannot be read'
-                          ], ques, 'lib/images/ishihara35.png', answers![9],
-                              changeIsFilled, saveSliderAnswers10),
+                          ], ques, 'lib/images/ishihara35.png', answers![19],
+                              changeIsFilled, saveSliderAnswers20),
                           MCQ([
                             '6',
                             '9',
                             '96',
                             'Other number',
                             'Plate cannot be read'
-                          ], ques, 'lib/images/ishihara96.png', answers![10],
-                              changeIsFilled, saveSliderAnswers11),
-                        ][index % 11];
+                          ], ques, 'lib/images/ishihara96.png', answers![20],
+                              changeIsFilled, saveSliderAnswers21),
+                        ][index % 21];
                       },
                     ),
                   ),
                   //SizedBox(height: height*0.01,),
                   NavigateButtons(
-                    pos != 10 ? 'NEXT' : 'FINISH',
+                    pos != 20 ? 'NEXT' : 'FINISH',
                     'BACK',
                     _isFilled![pos],
                     height,

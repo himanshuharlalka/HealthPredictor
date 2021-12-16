@@ -82,7 +82,7 @@ class _MCQ extends State<MCQ> {
         child: Column(
           children: [
             Container(
-              height: height * 0.3,
+              height: height * 0.4,
               margin: EdgeInsets.only(top: height * 0.03),
               child: Image.asset(
                 image,
