@@ -168,16 +168,16 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
       else
         answerList.add(i);
     }
-    if (answerList[9] == 'Left number is more clear')
-      answerList[9] = '3(5)*';
-    else if (answerList[9] == 'Right number is more clear')
-      answerList[9] = '(3)5*';
-    else if (answerList[9] == 'Both are clear') answerList[9] = '35';
-    if (answerList[10] == 'Left number is more clear')
-      answerList[10] = '9(6)*';
-    else if (answerList[10] == 'Right number is more clear')
-      answerList[10] = '(9)6*';
-    else if (answerList[10] == 'Both are clear') answerList[10] = '96';
+    if (answerList[19] == 'Left number is more clear')
+      answerList[19] = '3(5)*';
+    else if (answerList[19] == 'Right number is more clear')
+      answerList[19] = '(3)5*';
+    else if (answerList[19] == 'Both are clear') answerList[19] = '35';
+    if (answerList[20] == 'Left number is more clear')
+      answerList[20] = '9(6)*';
+    else if (answerList[20] == 'Right number is more clear')
+      answerList[20] = '(9)6*';
+    else if (answerList[20] == 'Both are clear') answerList[20] = '96';
     if (listEquals(answerList, correctAnswers)) {
       result = "Normal vision";
     } else if (listEquals(answerList, mildDutan)) {
@@ -216,7 +216,7 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
         top: false,
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: (answerList.length == 11)
+          body: (answerList.length == 21)
               ? Column(
                   children: <Widget>[
                     // Container(
