@@ -1,3 +1,4 @@
+import 'package:health_predictor/UI/InitialInputs.dart';
 import 'package:health_predictor/UI/home_screen.dart';
 import 'package:health_predictor/UI/navigationbase.dart';
 import 'package:health_predictor/loading.dart';
@@ -10,11 +11,10 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User?>(context);
-
     if (user == null) {
       return Signin();
     } else {
-      return NavigationHomeScreen();
+      return InitialInputs();
     }
   }
 }

@@ -1,8 +1,10 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_predictor/common/GradientProgressBar.dart';
 import 'package:health_predictor/common/MyopiaWidgets.dart';
 import 'package:health_predictor/common/navigate_buttons.dart';
+import 'package:health_predictor/services/firebaseHelper.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -11,7 +13,8 @@ import '../app_theme.dart';
 import 'MyopiaResult.dart';
 
 class Myopia extends StatefulWidget {
-  Myopia({Key? key}) : super(key: key);
+  final int height;
+  Myopia({Key? key, required this.height}) : super(key: key);
 
   @override
   _MyopiaState createState() => _MyopiaState();
@@ -26,13 +29,15 @@ class _MyopiaState extends State<Myopia> {
   final _controller = new PageController();
   static const _kDuration = const Duration(milliseconds: 500);
   static const _kCurve = Curves.ease;
+  FireBaseHelper fireBaseHelper = new FireBaseHelper();
+  User? user = FirebaseAuth.instance.currentUser;
   int pos = 0;
   List<bool>? _isFilled;
   List<List<String>> answers = [
-    ['right'],
+    ['right, write'],
     ['down'],
     ['up', 'aap', 'ab'],
-    ['right'],
+    ['right', 'write'],
     ['left'],
     ['down'],
     ['left'],
@@ -41,7 +46,7 @@ class _MyopiaState extends State<Myopia> {
   String? selectedMcq;
   bool? showPopup;
   String ques = 'What number do you see?';
-  List<String> choices = ['up', 'down', 'left', 'right', 'aap', 'ab'];
+  List<String> choices = ['up', 'down', 'left', 'right', 'aap', 'ab','write'];
   bool canFinish = true;
   bool ended = false;
   void changePos(value) {
@@ -290,22 +295,22 @@ class _MyopiaState extends State<Myopia> {
                       physics: new NeverScrollableScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
                         return [
-                          MyopiaWidgets('lib/images/myopia1.png', 'up',
-                              changeIsFilled, saveAnswers1),
-                          MyopiaWidgets('lib/images/myopia2.png', 'up',
-                              changeIsFilled, saveAnswers2),
-                          MyopiaWidgets('lib/images/myopia3.png', 'up',
-                              changeIsFilled, saveAnswers3),
-                          MyopiaWidgets('lib/images/myopia4.png', 'up',
-                              changeIsFilled, saveAnswers4),
-                          MyopiaWidgets('lib/images/myopia5.png', 'up',
-                              changeIsFilled, saveAnswers5),
-                          MyopiaWidgets('lib/images/myopia6.png', 'up',
-                              changeIsFilled, saveAnswers6),
-                          MyopiaWidgets('lib/images/myopia7.png', 'up',
-                              changeIsFilled, saveAnswers7),
-                          MyopiaWidgets('lib/images/myopia8.png', 'up',
-                              changeIsFilled, saveAnswers8),
+                          MyopiaWidgets(widget.height, 'lib/images/myopia1.png',
+                              'up', changeIsFilled, saveAnswers1),
+                          MyopiaWidgets(widget.height, 'lib/images/myopia2.png',
+                              'up', changeIsFilled, saveAnswers2),
+                          MyopiaWidgets(widget.height, 'lib/images/myopia3.png',
+                              'up', changeIsFilled, saveAnswers3),
+                          MyopiaWidgets(widget.height, 'lib/images/myopia4.png',
+                              'up', changeIsFilled, saveAnswers4),
+                          MyopiaWidgets(widget.height, 'lib/images/myopia5.png',
+                              'up', changeIsFilled, saveAnswers5),
+                          MyopiaWidgets(widget.height, 'lib/images/myopia6.png',
+                              'up', changeIsFilled, saveAnswers6),
+                          MyopiaWidgets(widget.height, 'lib/images/myopia7.png',
+                              'up', changeIsFilled, saveAnswers7),
+                          MyopiaWidgets(widget.height, 'lib/images/myopia8.png',
+                              'up', changeIsFilled, saveAnswers8),
                         ][index % 8];
                       },
                     ),
