@@ -42,7 +42,7 @@ class SigninState extends State {
           new Expanded(
               flex: 3,
               child: Container(
-                child: Center(child: Image.asset("lib/images/search.png")),
+                child: Center(child: Image.asset("lib/images/HoPElogo.png")),
               )),
           Text(""),
           new Expanded(
