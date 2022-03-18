@@ -12,6 +12,7 @@ class MCQ extends StatefulWidget {
   final String answer;
   final Function changeFilled;
   final Function saveMcqAnswers;
+  final bool flag;
 
   MCQ(
     this.options,
@@ -20,17 +21,12 @@ class MCQ extends StatefulWidget {
     this.answer,
     this.changeFilled,
     this.saveMcqAnswers,
+    this.flag,
   );
 
   @override
   _MCQ createState() => _MCQ(
-        options,
-        questions,
-        image,
-        answer,
-        changeFilled,
-        saveMcqAnswers,
-      );
+      options, questions, image, answer, changeFilled, saveMcqAnswers, flag);
 }
 
 class _MCQ extends State<MCQ> {
@@ -50,6 +46,8 @@ class _MCQ extends State<MCQ> {
     'Both are clear'
   ];
   String answer2 = "";
+  bool flag;
+
   _MCQ(
     this.options,
     this.questions,
@@ -57,6 +55,7 @@ class _MCQ extends State<MCQ> {
     this.answer,
     this.changeFilled,
     this.saveMcqAnswers,
+    this.flag,
   );
 
   @override
@@ -131,13 +130,13 @@ class _MCQ extends State<MCQ> {
                       setState(() {
                         answer = options[index];
                       });
-                      if (answer != '35' && answer != '96') {
-                        changeFilled(true);
-                        saveMcqAnswers(answer);
-                      } else {
+                      if (flag&&(answer == '35' || answer == '96')) {
                         scrollController!.animateTo(height * 0.5,
                             duration: Duration(milliseconds: 400),
                             curve: Curves.ease);
+                      } else {
+                        changeFilled(true);
+                        saveMcqAnswers(answer);
                       }
                     }
                   },
@@ -148,10 +147,10 @@ class _MCQ extends State<MCQ> {
               },
               itemCount: options.length,
             ),
-             (answer == '35' || answer == '96')
+            (flag&&(answer == '35' || answer == '96'))
                 ? SizedBox(height: height * 0.02)
                 : Container(),
-            (answer == '35' || answer == '96')
+            (flag&&(answer == '35' || answer == '96'))
                 ? Container(
                     margin: EdgeInsets.only(top: height * 0.012),
                     child: Text(
@@ -162,16 +161,15 @@ class _MCQ extends State<MCQ> {
                     ),
                   )
                 : Container(),
-            (answer == '35' || answer == '96')
+            (flag&&(answer == '35' || answer == '96'))
                 ? SizedBox(height: height * 0.02)
                 : Container(),
-            (answer == '35' || answer == '96')
+            (flag&&(answer == '35' || answer == '96'))
                 ? ListView.separated(
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return InkWell(
-                        
                         child: Container(
                           padding: EdgeInsets.all(height * 0.02),
                           decoration: BoxDecoration(

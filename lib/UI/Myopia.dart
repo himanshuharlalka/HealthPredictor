@@ -148,7 +148,7 @@ class _MyopiaState extends State<Myopia> {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                  builder: (context) => MyopiaResult(answers: pos)));
+                  builder: (context) => MyopiaResult(answers: (pos!=0)?pos-1:pos)));
         }
       }
     }
@@ -386,7 +386,7 @@ class _MyopiaState extends State<Myopia> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            MyopiaResult(answers: pos)));
+                                            MyopiaResult(answers: (pos!=0)?pos-1:0)));
                               }
                             },
                             child: Ink(

@@ -305,133 +305,133 @@ class _ColorBlindnessState extends State<ColorBlindness> {
                               'lib/images/ishihara12.jpg',
                               answers![0],
                               changeIsFilled,
-                              saveSliderAnswers1),
+                              saveSliderAnswers1, false),
                           MCQ([
                             '8',
                             '3',
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara8.jpg', answers![1],
-                              changeIsFilled, saveSliderAnswers2),
+                              changeIsFilled, saveSliderAnswers2, false),
                           MCQ([
                             '6',
                             '5',
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara6.jpg', answers![2],
-                              changeIsFilled, saveSliderAnswers3),
+                              changeIsFilled, saveSliderAnswers3, false),
                           MCQ([
                             '29',
                             '70',
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara29.jpg', answers![3],
-                              changeIsFilled, saveSliderAnswers4),
+                              changeIsFilled, saveSliderAnswers4, false),
                           MCQ([
                             '57',
                             '35',
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara57.jpg', answers![4],
-                              changeIsFilled, saveSliderAnswers5),
+                              changeIsFilled, saveSliderAnswers5, false),
                           MCQ([
                             '5',
                             '2',
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara5.jpg', answers![5],
-                              changeIsFilled, saveSliderAnswers6),
+                              changeIsFilled, saveSliderAnswers6, false),
                           MCQ([
                             '3',
                             '5',
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara3.jpg', answers![6],
-                              changeIsFilled, saveSliderAnswers7),
+                              changeIsFilled, saveSliderAnswers7, false),
                           MCQ([
                             '15',
                             '17',
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara15.jpg', answers![7],
-                              changeIsFilled, saveSliderAnswers8),
+                              changeIsFilled, saveSliderAnswers8, false),
                           MCQ([
                             '74',
                             '21',
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara74.jpg', answers![8],
-                              changeIsFilled, saveSliderAnswers9),
+                              changeIsFilled, saveSliderAnswers9, false),
                           MCQ(
                               ['2', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishihara2.jpg',
                               answers![9],
                               changeIsFilled,
-                              saveSliderAnswers10),
+                              saveSliderAnswers10, false),
                           MCQ(
                               ['6', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishihara6.jpg',
                               answers![10],
                               changeIsFilled,
-                              saveSliderAnswers11),
+                              saveSliderAnswers11, false),
                           MCQ(
                               ['97', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishihara97.jpg',
                               answers![11],
                               changeIsFilled,
-                              saveSliderAnswers12),
+                              saveSliderAnswers12, false),
                           MCQ(
                               ['45', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishihara45.jpg',
                               answers![12],
                               changeIsFilled,
-                              saveSliderAnswers13),
+                              saveSliderAnswers13, false),
                           MCQ(
                               ['5', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishihara5.1.jpg',
                               answers![13],
                               changeIsFilled,
-                              saveSliderAnswers14),
+                              saveSliderAnswers14, false),
                           MCQ(
                               ['7', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishihara7.jpg',
                               answers![14],
                               changeIsFilled,
-                              saveSliderAnswers15),
+                              saveSliderAnswers15, false),
                           MCQ(
                               ['16', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishihara16.jpg',
                               answers![15],
                               changeIsFilled,
-                              saveSliderAnswers16),
+                              saveSliderAnswers16, false),
                           MCQ(
                               ['73', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishihara73.jpg',
                               answers![16],
                               changeIsFilled,
-                              saveSliderAnswers17),
+                              saveSliderAnswers17, false),
                           MCQ(
                               ['5', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishiharaX1.jpg',
                               answers![17],
                               changeIsFilled,
-                              saveSliderAnswers18),
+                              saveSliderAnswers18, false),
                           MCQ(
                               ['2', 'Other number', 'Plate cannot be read'],
                               ques,
                               'lib/images/ishiharaX2.jpg',
                               answers![18],
                               changeIsFilled,
-                              saveSliderAnswers19),
+                              saveSliderAnswers19, false),
                           MCQ([
                             '3',
                             '5',
@@ -439,7 +439,7 @@ class _ColorBlindnessState extends State<ColorBlindness> {
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara35.png', answers![19],
-                              changeIsFilled, saveSliderAnswers20),
+                              changeIsFilled, saveSliderAnswers20, true),
                           MCQ([
                             '6',
                             '9',
@@ -447,7 +447,7 @@ class _ColorBlindnessState extends State<ColorBlindness> {
                             'Other number',
                             'Plate cannot be read'
                           ], ques, 'lib/images/ishihara96.png', answers![20],
-                              changeIsFilled, saveSliderAnswers21),
+                              changeIsFilled, saveSliderAnswers21, true),
                         ][index % 21];
                       },
                     ),
