@@ -95,12 +95,6 @@ class SigninState extends State {
                               });
                             } else {
                               print("done $result");
-                              Navigator.push(
-                                  (context),
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        InitialInputs(),
-                                  ));
                             }
                           },
                         ))),

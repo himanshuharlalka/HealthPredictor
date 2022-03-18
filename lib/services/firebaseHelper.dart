@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:health_predictor/model/user.dart';
 
 class FireBaseHelper {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -38,5 +39,21 @@ class FireBaseHelper {
     await user.get().then((value) => snapshot = value);
     var height = int.parse((snapshot!.get('height').toString()));
     return height;
+  }
+
+  Future<UserDetails> getUserDetails() async {
+    DocumentReference user = firestore.collection('users').doc(mUser!.uid);
+    DocumentSnapshot? snapshot;
+    await user.get().then((value) => snapshot = value);
+    UserDetails uD = new UserDetails();
+    uD.ailments = snapshot!.get('ailments');
+    uD.dob = snapshot!.get('dob');
+    uD.name = snapshot!.get('name');
+    uD.weight = snapshot!.get('weight');
+    uD.bloodgroup = snapshot!.get('bloodgroup');
+    uD.height = snapshot!.get('height');
+    uD.gender = snapshot!.get('gender');
+
+    return uD;
   }
 }

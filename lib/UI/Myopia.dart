@@ -34,7 +34,7 @@ class _MyopiaState extends State<Myopia> {
   int pos = 0;
   List<bool>? _isFilled;
   List<List<String>> answers = [
-    ['right, write'],
+    ['right', 'write'],
     ['down'],
     ['up', 'aap', 'ab'],
     ['right', 'write'],
@@ -46,7 +46,7 @@ class _MyopiaState extends State<Myopia> {
   String? selectedMcq;
   bool? showPopup;
   String ques = 'What number do you see?';
-  List<String> choices = ['up', 'down', 'left', 'right', 'aap', 'ab','write'];
+  List<String> choices = ['up', 'down', 'left', 'right', 'aap', 'ab', 'write'];
   bool canFinish = true;
   bool ended = false;
   void changePos(value) {
