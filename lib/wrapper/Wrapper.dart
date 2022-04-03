@@ -14,7 +14,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return Signin();
     } else {
-      return InitialInputs();
+      return InitialInputs(refill: false);
     }
   }
 }

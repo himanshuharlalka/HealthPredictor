@@ -45,10 +45,13 @@ dependencies:
   http: ^0.13.3
   speech_to_text: ^5.1.1
   audioplayers: ^0.20.1
+  ml_dataframe: ^0.5.1
+  ml_preprocessing: ^6.0.0
   carousel_slider:
   cached_network_image:
   step_progress_indicator:
   intl:
+  ml_algo: ^16.5.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

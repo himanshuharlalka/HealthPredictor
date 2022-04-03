@@ -74,13 +74,14 @@ class AuthService {
           'dob': null,
           'gender': "",
           'height': "",
-          'weight:': "",
+          'weight': "",
           'bloodgroup': "",
           'ailments': [],
         });
       }
       print('hey');
       print('signInWithGoogle succeeded: $user');
+      
       return user;
     } else {
       print("failed");

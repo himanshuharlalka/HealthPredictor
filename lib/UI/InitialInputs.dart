@@ -3,13 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_predictor/app_theme.dart';
 import 'package:health_predictor/loading.dart';
+import 'package:health_predictor/model/user.dart';
 import 'package:health_predictor/services/firebaseHelper.dart';
 import 'package:intl/intl.dart';
 
 import 'navigationbase.dart';
 
 class InitialInputs extends StatefulWidget {
-  const InitialInputs({Key? key}) : super(key: key);
+  final bool refill;
+  const InitialInputs({Key? key, required this.refill}) : super(key: key);
 
   @override
   _InitialInputsState createState() => _InitialInputsState();
@@ -27,7 +29,8 @@ class _InitialInputsState extends State<InitialInputs> {
   @override
   void initState() {
     super.initState();
-    checkFilled();
+    getData();
+
     _nameController = TextEditingController();
   }
 
@@ -37,18 +40,26 @@ class _InitialInputsState extends State<InitialInputs> {
     super.dispose();
   }
 
-  checkFilled() async {
-    bool ans = await fireBaseHelper.hasFilled();
-    setState(() {
-      flag = true;
-    });
-
-    if (ans)
+  late UserDetails uD;
+  getData() async {
+    uD = await fireBaseHelper.getUserDetails();
+    if (!widget.refill && uD.height!.isNotEmpty) {
       Navigator.push(
           (context),
           MaterialPageRoute(
             builder: (context) => NavigationHomeScreen(),
           ));
+    }
+
+    setState(() {
+      gender = uD.gender!;
+      map['height'] = uD.height;
+      map['weight'] = uD.weight;
+      map['bloodgroup'] = uD.bloodgroup;
+      map['dob'] = uD.dob;
+      _nameController.text = uD.dob!;
+      flag = true;
+    });
   }
 
   @override
@@ -140,7 +151,8 @@ class _InitialInputsState extends State<InitialInputs> {
                                                                 right: 8),
                                                         child: TextField(
                                                           controller:
-                                                              _nameController, //editing controller of this TextField
+                                                              _nameController,
+                                                          //editing controller of this TextField
                                                           decoration:
                                                               InputDecoration(
                                                             suffixIcon: Icon(
@@ -162,8 +174,12 @@ class _InitialInputsState extends State<InitialInputs> {
                                                                 await showDatePicker(
                                                                     context:
                                                                         context,
-                                                                    initialDate:
-                                                                        DateTime
+                                                                    initialDate: (uD
+                                                                            .dob!
+                                                                            .isNotEmpty)
+                                                                        ? DateTime.parse(uD
+                                                                            .dob!)
+                                                                        : DateTime
                                                                             .now(),
                                                                     firstDate:
                                                                         DateTime(
@@ -434,6 +450,7 @@ class _InitialInputsState extends State<InitialInputs> {
                                                               left: 16,
                                                               right: 16),
                                                       child: TextFormField(
+                                                        initialValue: uD.height,
                                                         style: TextStyle(
                                                           fontFamily:
                                                               'WorkSans',
@@ -537,6 +554,8 @@ class _InitialInputsState extends State<InitialInputs> {
                                                                 left: 16,
                                                                 right: 16),
                                                         child: TextFormField(
+                                                          initialValue:
+                                                              uD.weight,
                                                           style: TextStyle(
                                                             fontFamily:
                                                                 'WorkSans',
@@ -639,6 +658,8 @@ class _InitialInputsState extends State<InitialInputs> {
                                                               left: 16,
                                                               right: 16),
                                                       child: TextFormField(
+                                                        initialValue:
+                                                            uD.bloodgroup,
                                                         style: TextStyle(
                                                           fontFamily:
                                                               'WorkSans',
@@ -814,7 +835,7 @@ class _InitialInputsState extends State<InitialInputs> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Hi ' + ((user!.displayName)??"") + ',',
+                  'Hi ' + ((user!.displayName) ?? "") + ',',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,

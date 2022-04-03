@@ -87,6 +87,7 @@ class SigninState extends State {
                           color: Colors.black,
                           onPressed: () async {
                             User? result = await _auth.signInWithGoogle();
+                            print("HI");
                             if (result == null) {
                               setState(() {
                                 error = "Error.";
@@ -95,6 +96,14 @@ class SigninState extends State {
                               });
                             } else {
                               print("done $result");
+                              Navigator.pushReplacement(
+                                            (context),
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  InitialInputs(refill: true),
+                                            ));
+                                        //
+                                      
                             }
                           },
                         ))),

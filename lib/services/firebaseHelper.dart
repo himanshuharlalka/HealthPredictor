@@ -13,7 +13,7 @@ class FireBaseHelper {
       'dob': map["dob"],
       'gender': map["gender"],
       'height': map["height"],
-      'weight:': map["weight"],
+      'weight': map["weight"],
       'bloodgroup': map["bloodgroup"],
       'ailments': map["ailments"],
     }).then((value) {
@@ -46,10 +46,14 @@ class FireBaseHelper {
     DocumentSnapshot? snapshot;
     await user.get().then((value) => snapshot = value);
     UserDetails uD = new UserDetails();
+    
     uD.ailments = snapshot!.get('ailments');
+    
     uD.dob = snapshot!.get('dob');
     uD.name = snapshot!.get('name');
+    
     uD.weight = snapshot!.get('weight');
+    print( uD.weight);
     uD.bloodgroup = snapshot!.get('bloodgroup');
     uD.height = snapshot!.get('height');
     uD.gender = snapshot!.get('gender');
