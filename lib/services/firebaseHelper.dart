@@ -46,7 +46,7 @@ class FireBaseHelper {
     DocumentSnapshot? snapshot;
     await user.get().then((value) => snapshot = value);
     UserDetails uD = new UserDetails();
-    
+    print(snapshot);
     uD.ailments = snapshot!.get('ailments');
     
     uD.dob = snapshot!.get('dob');
