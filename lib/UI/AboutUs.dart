@@ -16,13 +16,13 @@ class AboutUs extends StatefulWidget {
 
 class _AboutUsState extends State<AboutUs> {
   int a = 0, b = 0, c = 0;
-  List questions = ['Are the predictions 100% accurate?', '', '', '', ''];
+  List questions = ['Are the predictions 100% accurate?', 'How are the predictions made?', 'How do we contact the doctors?', 'How do you perform each test?', 'Are the tests reliable?'];
   List answers = [
     'No, they are not 100% accurate. They are accurate enough to indicate if you are at a higher risk.',
-    '',
-    '',
-    '',
-    ''
+    'We have trained and tested the data using various machine learning techniques and the one with the best accuracy has been chosen.',
+    'The doctor recommendation module will list all the doctors based on your location. To book an appointment you can contact them at your convenience.',
+    'Once you start the test, instructions for the same will be provided before beginning it. Follow them to get accurate results.',
+    'Please answer the questions honestly to get accurate enough results.'
   ];
   List<bool> isOpened = [false, false, false, false, false];
   List images = [
@@ -84,7 +84,7 @@ class _AboutUsState extends State<AboutUs> {
                                   left: height * 0.035,
                                   right: height * 0.035),
                               child: Text(
-                                "An initiative to predict diseases from the comfort of your own home.",
+                                "An initiative to predict ailments from the comfort of your own home.",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
