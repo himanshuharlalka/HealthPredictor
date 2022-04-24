@@ -96,12 +96,12 @@ class SigninState extends State {
                               });
                             } else {
                               print("done $result");
-                              Navigator.pushReplacement(
-                                            (context),
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  InitialInputs(refill: true),
-                                            ));
+                              // Navigator.pushReplacement(
+                              //               (context),
+                              //               MaterialPageRoute(
+                              //                 builder: (context) =>
+                              //                     InitialInputs(refill: true),
+                              //               ));
                                         //
                                       
                             }
