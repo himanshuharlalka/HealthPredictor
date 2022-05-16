@@ -103,7 +103,7 @@ class _HealthJournalState extends State<HealthJournal> {
                                       },
                                       child: Ink(
                                         height: 0.065 * height,
-                                        width: 0.35 * width,
+                                        width: 0.4 * width,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(10.0),
@@ -117,7 +117,7 @@ class _HealthJournalState extends State<HealthJournal> {
                                               Icon(
                                                 Icons.edit,
                                                 color: Colors.white,
-                                                size: height * 0.03,
+                                                size: height * 0.023,
                                               ),
                                               SizedBox(
                                                 width: width * 0.02,
@@ -126,7 +126,7 @@ class _HealthJournalState extends State<HealthJournal> {
                                                 'Edit Profile',
                                                 style: TextStyle(
                                                     color: AppTheme.white,
-                                                    fontSize: height * 0.025,
+                                                    fontSize: height * 0.023,
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),

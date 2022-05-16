@@ -366,7 +366,7 @@ class _AboutUsState extends State<AboutUs> {
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.w300,
-                                          fontSize: height * 0.025,
+                                          fontSize: height * 0.02,
                                         ),
                                         textAlign: TextAlign.center,
                                       ),
@@ -381,7 +381,7 @@ class _AboutUsState extends State<AboutUs> {
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.w300,
-                                        fontSize: height * 0.025,
+                                        fontSize: height * 0.02,
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
