@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_predictor/common/Colors_App.dart';
 import 'package:health_predictor/common/Text_Styles.dart';
+import 'package:health_predictor/services/firebaseHelper.dart';
 
 import '../app_theme.dart';
 
@@ -29,14 +30,14 @@ class _MyopiaResultState extends State<MyopiaResult> {
     '20/10'
   ];
   List<String> acuityNonUS = [
-    '0.1',
-    '0.2',
-    '0.285',
-    '0.4',
-    '0.667',
-    '1.0',
-    '1.33',
-    '2.0'
+    '-2.50',
+    '-1.75 to -2.0',
+    '-1.50',
+    '-1.0',
+    '-0.5',
+    'plano to -0.125',
+    'plano',
+    'plano'
   ];
 
   @override
@@ -44,6 +45,11 @@ class _MyopiaResultState extends State<MyopiaResult> {
     result =
         acuityUS[widget.answers] + " (" + acuityNonUS[widget.answers] + ")";
     super.initState();
+  }
+
+  postResult() async {
+    FireBaseHelper fireBaseHelper = FireBaseHelper();
+    fireBaseHelper.addResult(result, 0);
   }
 
   @override

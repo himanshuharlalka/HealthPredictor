@@ -77,6 +77,10 @@ class AuthService {
           'weight': "",
           'bloodgroup': "",
           'ailments': [],
+          'myopia':[],
+          'chd':[],
+          'pcod':[],
+          'cb':[],
         });
       }
       print('hey');

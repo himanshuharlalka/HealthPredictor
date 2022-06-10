@@ -21,6 +21,22 @@ class FireBaseHelper {
     }).catchError((error) => print("Failed to add user: $error"));
   }
 
+  Future<void> addResult(String result, int type) async {
+    CollectionReference users = firestore.collection('users');
+    DocumentReference user = firestore.collection('users').doc(mUser!.uid);
+    DocumentSnapshot? snapshot;
+    await user.get().then((value) => snapshot = value);
+    String testName = (type == 1) ? 'cb' : 'myopia';
+    List list = snapshot!.get(testName);
+    List toAdd = [result, DateTime.now()];
+    list.add(toAdd);
+    return users.doc(mUser!.uid).update({
+      testName: list,
+    }).then((value) {
+      print('success');
+    }).catchError((error) => print("Failed to add user: $error"));
+  }
+
   Stream<DocumentSnapshot> getDetails(String code) {
     DocumentReference room = firestore.collection('users').doc(mUser!.uid);
     return room.snapshots();
@@ -48,12 +64,12 @@ class FireBaseHelper {
     UserDetails uD = new UserDetails();
     print(snapshot);
     uD.ailments = snapshot!.get('ailments');
-    
+
     uD.dob = snapshot!.get('dob');
     uD.name = snapshot!.get('name');
-    
+
     uD.weight = snapshot!.get('weight');
-    print( uD.weight);
+    print(uD.weight);
     uD.bloodgroup = snapshot!.get('bloodgroup');
     uD.height = snapshot!.get('height');
     uD.gender = snapshot!.get('gender');
