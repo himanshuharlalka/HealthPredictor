@@ -82,6 +82,10 @@ class FireBaseHelper {
     uD.bloodgroup = snapshot!.get('bloodgroup');
     uD.height = snapshot!.get('height');
     uD.gender = snapshot!.get('gender');
+    uD.myopia = snapshot!.get('myopia');
+    uD.chd = snapshot!.get('chd');
+    uD.pcod = snapshot!.get('pcod');
+    uD.cb = snapshot!.get('cb');
 
     return uD;
   }

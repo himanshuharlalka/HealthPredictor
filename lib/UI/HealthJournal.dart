@@ -85,6 +85,18 @@ class _HealthJournalState extends State<HealthJournal> {
                                   details("Blood Group",
                                       snapshot.data!.userDetails.bloodgroup!),
                                   Divider(color: AppTheme.lightText),
+                                  details("Myopia",
+                                      snapshot.data!.userDetails.myopia!.toString()),
+                                  Divider(color: AppTheme.lightText),
+                                  details("Color Blindness",
+                                      snapshot.data!.userDetails.cb!.toString()),
+                                  Divider(color: AppTheme.lightText),
+                                  details("PCOD",
+                                      snapshot.data!.userDetails.pcod!.toString()),
+                                  Divider(color: AppTheme.lightText),
+                                  details("Heart Attack",
+                                      snapshot.data!.userDetails.chd!.toString()),
+                                  Divider(color: AppTheme.lightText),
                                   SizedBox(height: height * 0.03),
                                   Material(
                                     elevation: 5,
@@ -152,17 +164,24 @@ class _HealthJournalState extends State<HealthJournal> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       //mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        Text(
-          tag,
-          style:
-              TextStyle(fontSize: height * 0.025, fontWeight: FontWeight.w500),
+        Expanded(
+          flex:1,
+          child: Text(
+            tag,
+            style:
+                TextStyle(fontSize: height * 0.025, fontWeight: FontWeight.w500),
+          ),
         ),
-        Text(
-          value,
-          style: TextStyle(
-              fontSize: height * 0.025,
-              fontWeight: FontWeight.w700,
-              color: AppTheme.blue),
+        Expanded(
+          child: Text(
+            value,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: TextStyle(
+                fontSize: height * 0.025,
+                fontWeight: FontWeight.w700,
+                color: AppTheme.blue),
+          ),
         ),
       ],
     );
