@@ -44,6 +44,7 @@ class _MyopiaResultState extends State<MyopiaResult> {
   void initState() {
     result =
         acuityUS[widget.answers] + " (" + acuityNonUS[widget.answers] + ")";
+    postResult();
     super.initState();
   }
 

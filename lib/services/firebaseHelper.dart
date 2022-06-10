@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:health_predictor/model/user.dart';
+import 'package:intl/intl.dart';
 
 class FireBaseHelper {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -27,8 +28,16 @@ class FireBaseHelper {
     DocumentSnapshot? snapshot;
     await user.get().then((value) => snapshot = value);
     String testName = (type == 1) ? 'cb' : 'myopia';
-    List list = snapshot!.get(testName);
-    List toAdd = [result, DateTime.now()];
+    var list = snapshot!.get(testName);
+    print(list);
+    print(list.runtimeType);
+    String
+    formattedDate =
+    DateFormat(
+        'dd-MM-yyyy')
+        .format(
+        DateTime.now());
+    String toAdd = result +" " +formattedDate;
     list.add(toAdd);
     return users.doc(mUser!.uid).update({
       testName: list,

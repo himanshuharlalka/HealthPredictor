@@ -5,6 +5,7 @@ import 'package:health_predictor/common/CommonWidgets.dart';
 import 'package:health_predictor/common/Text_Styles.dart';
 
 import '../app_theme.dart';
+import '../services/firebaseHelper.dart';
 
 class ColorBlindnessResult extends StatefulWidget {
   final List? answers;
@@ -197,8 +198,12 @@ class _ColorBlindnessResultState extends State<ColorBlindnessResult> {
     } else {
       result = "Not Definite";
     }
+    postResult();
   }
-
+  postResult() async {
+    FireBaseHelper fireBaseHelper = FireBaseHelper();
+    fireBaseHelper.addResult(result, 1);
+  }
   @override
   void initState() {
     getData();

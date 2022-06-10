@@ -84,8 +84,8 @@ class _MyopiaWidgets extends State<MyopiaWidgets> {
               margin: EdgeInsets.only(top: height1 * 0.03),
               child: Image.asset(
                 image,
-                height: (235 * (height)) / (120 * 3.75),
-                width: (235 * (height)) / (120 * 3.75),
+                height: (235 * (height)) / (120 * 4.5),
+                width: (235 * (height)) / (120 * 4.5),
               ),
             ),
             SizedBox(height: height1 * 0.02),
